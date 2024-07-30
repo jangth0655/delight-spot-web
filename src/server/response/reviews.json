@@ -1,0 +1,63 @@
+[
+  {
+    "pk": 24,
+    "user": {
+      "pk": 1,
+      "avatar": "",
+      "username": "jth",
+      "date_joined": "2024-06-09T00:12:03+09:00"
+    },
+    "total_rating": 4.0,
+    "taste_rating": 5,
+    "atmosphere_rating": 5,
+    "kindness_rating": 5,
+    "clean_rating": 5,
+    "parking_rating": 3,
+    "restroom_rating": 1,
+    "description": "12345656sdfsdfdsfsdfsdfsdfsd",
+    "review_photo": [
+      "https://yt3.ggpht.com/_wRud_tdautCJocda7rBKD05JLMguoGtplOm9jcxT1tM1WU2wcRS6rECZj-PVqPEgtVcNM8Wgat61vU=s640-c-fcrop64=1,147b0000bf25ffff-rw-nd-v1",
+      "https://yt3.ggpht.com/uf5oDtnvj0qd0glOy3-SEep9HsqvdXKQ52hhHgrRQbyIU0NovHWtbw4_f8JT48FO5n6NH3CyJTsF9g=s640-c-fcrop64=1,00000000ffffffff-rw-nd-v1",
+      "https://yt3.ggpht.com/uTxekqdpFryhDWlIwCRy3RaFAVzTQLSxI8UyeSc06reVBQWZpAqtIptnSh7zaGLyKrPVc8IxO8YTAw=s640-c-fcrop64=1,00000000ffffffff-rw-nd-v1",
+      "https://yt3.ggpht.com/Lat2i2Fgs5vpUo9cRlsxGDg5PoYvMrzvjfeZ-d2ERxxeqNJTZNNPk5xkaWeYwlVeBOb3y5BSVr8xWXw=s640-c-fcrop64=1,000032f6ffffc2f5-rw-nd-v1"
+    ]
+  },
+  {
+    "pk": 26,
+    "user": {
+      "pk": 13,
+      "avatar": "http://k.kakaocdn.net/dn/rKOAM/btsGZwiQtk0/EHA0k6aLkgk6b6hpzNVlwK/img_640x640.jpg",
+      "username": "THEE",
+      "date_joined": "2024-07-15T22:30:04.345101+09:00"
+    },
+    "total_rating": 0.16666666666666666,
+    "taste_rating": 1,
+    "atmosphere_rating": 0,
+    "kindness_rating": 0,
+    "clean_rating": 0,
+    "parking_rating": 0,
+    "restroom_rating": 0,
+    "description": "리뷰 작성",
+    "review_photo": []
+  },
+  {
+    "pk": 27,
+    "user": {
+      "pk": 13,
+      "avatar": "http://k.kakaocdn.net/dn/rKOAM/btsGZwiQtk0/EHA0k6aLkgk6b6hpzNVlwK/img_640x640.jpg",
+      "username": "THEE",
+      "date_joined": "2024-07-15T22:30:04.345101+09:00"
+    },
+    "total_rating": 4.0,
+    "taste_rating": 4,
+    "atmosphere_rating": 3,
+    "kindness_rating": 4,
+    "clean_rating": 3,
+    "parking_rating": 5,
+    "restroom_rating": 5,
+    "description": "리뷰테스트 1",
+    "review_photo": [
+      "https://delight-spot.s3.ap-northeast-2.amazonaws.com/f464daa1-69eb-4059-bfbb-ee78c0659c46-marin-ww.jpeg"
+    ]
+  }
+]
