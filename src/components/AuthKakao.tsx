@@ -1,3 +1,5 @@
+'use client';
+
 import { useModal } from '@/hooks/useModal';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
