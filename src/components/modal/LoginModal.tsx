@@ -12,7 +12,7 @@ interface Props {
 export default function LoginModal({ isOpen, onCloseModal }: Props) {
   const kakaoLogin = () => {
     window.Kakao.Auth.authorize({
-      redirectUri: 'http://127.0.0.1:3000/social/kakao',
+      redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URL,
     });
   };
 
