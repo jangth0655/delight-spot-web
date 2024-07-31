@@ -4,7 +4,6 @@ import { ACCESS_TOKEN } from '@/constants';
 import { handleNetworkError } from '@/utils/handleNetworkError';
 
 export const SSR_BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1`;
-console.log('env ', process.env.NEXT_PUBLIC_BASE_URL);
 export const CSR_BASE_URL = '/api/v1/';
 
 const isServer = typeof window === 'undefined';
