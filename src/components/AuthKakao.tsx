@@ -1,8 +1,7 @@
 'use client';
 
 import { useModal } from '@/hooks/useModal';
-import { useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect } from 'react';
 import { useKakaoLogin } from '@/hooks/queries/useAuth';
 
