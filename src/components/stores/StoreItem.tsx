@@ -1,19 +1,27 @@
+'use client';
+
 import Image from 'next/image';
 import { IoStar, IoImage, IoHeartSharp } from 'react-icons/io5';
 
 import { translateKindMenu } from '@/utils/translateToKorean';
 import { Store } from '@/types/domain/stores';
+import { useState } from 'react';
 
 interface Props {
   store: Store;
 }
 
 export default function StoreItem({ store }: Props) {
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
   return (
     <li className="flex gap-2">
       <div className="relative w-[8rem] h-[8rem] rounded-md overflow-hidden ">
-        {store.store_photo?.length > 0 ? (
-          <Image src={store.store_photo[0]} alt={`store ${store.name}`} fill />
+        {store.store_photo?.length > 0 && !imageError ? (
+          <Image src={store.store_photo[0]} alt={`store ${store.name}`} fill onError={handleImageError} />
         ) : (
           <div className="absolute w-full h-full bg-slate-S200 flex items-center justify-center">
             <IoImage size={20} color="#64748b" data-testid="store-no-image-icon" />

@@ -2,7 +2,7 @@
 
 import { useModal } from '@/hooks/useModal';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useKakaoLogin } from '@/hooks/queries/useAuth';
 
 import AlertModal from './modal/AlertModal';
@@ -11,6 +11,7 @@ export default function AuthKakao() {
   const code = useSearchParams().get('code');
   const router = useRouter();
   const modal = useModal();
+  const hasCodeRef = useRef(false);
 
   const { mutate: kakaoLogin, error: kakaoLoginError } = useKakaoLogin(code, {
     onError: () => {
@@ -25,11 +26,12 @@ export default function AuthKakao() {
     }
   }, [code, modal]);
 
-  useEffect(() => {
+  if (!hasCodeRef.current && typeof window !== 'undefined') {
     if (code) {
       kakaoLogin(code);
     }
-  }, [code, kakaoLogin]);
+    hasCodeRef.current = true;
+  }
 
   const closeModal = useCallback(() => {
     modal.hide();

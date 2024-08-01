@@ -60,7 +60,7 @@ export default function SignUpForm() {
           />
           <div className="flex items-center gap-2">
             <Button title="확인" disabled={!isValid} />
-            <Button title="돌아가기" onClick={onGoHome} />
+            <Button title="돌아가기" onClick={onGoHome} type="button" />
           </div>
           {errors.email?.message && (
             <p className="text-label text-system-S100 leading-label font-bold text-center">{errors.email?.message}</p>

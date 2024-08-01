@@ -13,6 +13,7 @@ export default function Portal({ children, portalId = 'modal' }: Props) {
 
   useEffect(() => {
     let portalRoot = document.getElementById(portalId);
+
     if (!portalRoot) {
       portalRoot = document.createElement('div');
       portalRoot.setAttribute('id', portalId);
@@ -21,7 +22,9 @@ export default function Portal({ children, portalId = 'modal' }: Props) {
     setContainer(portalRoot);
 
     return () => {
-      document.body.removeChild(portalRoot);
+      if (portalRoot && document.body.contains(portalRoot)) {
+        document.body.removeChild(portalRoot);
+      }
     };
   }, [portalId]);
 
