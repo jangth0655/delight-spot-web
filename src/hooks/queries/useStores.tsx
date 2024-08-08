@@ -6,6 +6,7 @@ import {
   useInfiniteQuery,
   useMutation,
   useQuery,
+  useQueryClient,
 } from '@tanstack/react-query';
 
 import { number, queryKeys } from '@/constants';
@@ -19,21 +20,20 @@ import {
 } from '@/services/store/store';
 import { ErrorStatus, UseMutationCustomOptions, UseQueryCustomOption } from '@/types/common';
 import { Store, StoreDetail } from '@/types/domain/stores';
-import { queryClient } from '@/QueryProvider';
 import { useRouter } from 'next/navigation';
 import { useStoreListTabState } from '@/store/useStoreListTabStore';
 import { useToastStore } from '@/store/useToastStore';
 import { useDeleteImage } from './useImage';
 
 function useGetInfiniteStores(
-  selectedType: string = 'all',
   queryOptions?: UseInfiniteQueryOptions<Store[], ErrorStatus, InfiniteData<Store[], number>, Store[], QueryKey, number>
 ) {
+  const { selectedTab } = useStoreListTabState();
   return useInfiniteQuery({
     queryFn: ({ pageParam }) => {
-      return getStores(pageParam, selectedType);
+      return getStores(pageParam, selectedTab);
     },
-    queryKey: [queryKeys.STORE.GET_STORES, selectedType],
+    queryKey: [queryKeys.STORE.GET_STORES, selectedTab],
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) => {
       if (lastPage.length < number.INFINITE_QUERY_OFFSET) return undefined;
@@ -48,6 +48,7 @@ function useGetInfiniteStores(
 }
 
 function useCreateStore(mutationOptions?: UseMutationCustomOptions) {
+  const queryClient = useQueryClient();
   const router = useRouter();
   const { addToast } = useToastStore();
   const { selectedTab } = useStoreListTabState();
@@ -56,6 +57,7 @@ function useCreateStore(mutationOptions?: UseMutationCustomOptions) {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [queryKeys.STORE.GET_STORES, selectedTab],
+        refetchType: 'inactive',
       });
       addToast({
         message: '스토어를 생성했습니다.',
@@ -68,6 +70,7 @@ function useCreateStore(mutationOptions?: UseMutationCustomOptions) {
 }
 
 function useDeleteStore(storeId: number, mutationOptions?: UseMutationCustomOptions) {
+  const queryClient = useQueryClient();
   const { selectedTab } = useStoreListTabState();
   const { addToast } = useToastStore();
   const router = useRouter();
@@ -82,6 +85,7 @@ function useDeleteStore(storeId: number, mutationOptions?: UseMutationCustomOpti
       router.replace('/');
       queryClient.invalidateQueries({
         queryKey: [queryKeys.STORE.GET_STORES, selectedTab],
+        refetchType: 'inactive',
       });
       addToast({
         message: '스토어를 제거했습니다.',
@@ -94,6 +98,7 @@ function useDeleteStore(storeId: number, mutationOptions?: UseMutationCustomOpti
 }
 
 function useEditStore(storeId: number, mutationOptions?: UseMutationCustomOptions) {
+  const queryClient = useQueryClient();
   const router = useRouter();
   const { addToast } = useToastStore();
   return useMutation({

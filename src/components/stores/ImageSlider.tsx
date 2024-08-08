@@ -30,13 +30,13 @@ export default function ImageSlider({ images }: Props) {
   return (
     <div className="absolute w-full h-full">
       <Image
-        priority
         src={images[currentIndex]}
         alt="slider_image"
         fill
         onLoad={() => {
           setIsImageLoaded(true);
         }}
+        className="object-cover"
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mMsqgcAAWkA844c0PgAAAAASUVORK5CYII="
       />

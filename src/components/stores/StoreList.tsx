@@ -17,7 +17,7 @@ import { storeTabList } from '@/constants';
 
 export default function StoreList() {
   const { selectedTab, setSelectedTab } = useStoreListTabState();
-  const { data, fetchNextPage, isPending, isSuccess, error: storeListError } = useGetInfiniteStores(selectedTab);
+  const { data, fetchNextPage, isPending, isSuccess, error: storeListError } = useGetInfiniteStores();
   const limitRef = useRef<HTMLDivElement | null>(null);
   const { isInterSecting } = useIntersectionObserver({
     node: limitRef.current,

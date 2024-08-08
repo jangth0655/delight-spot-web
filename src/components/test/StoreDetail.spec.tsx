@@ -4,16 +4,18 @@ import userInfo from '@/server/response/users.json';
 import { mockUseLoginStore } from '@/utils/test/mockZustandStore';
 import render from '@/utils/test/render';
 import StoreDetailInfo from '../stores/StoreDetailInfo';
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import mockStoreDetailData from '@/server/response/storeDetail.json';
 import { copyToClipboard } from '@/utils/copyText';
 
 const routerPush = jest.fn();
+const routerReplace = jest.fn();
 
 jest.mock('next/navigation', () => ({
   useRouter() {
     return {
       push: routerPush,
+      replace: routerReplace,
     };
   },
 }));
@@ -93,12 +95,6 @@ describe('비로그인일 경우', () => {
   });
 });
 
-jest.mock('../modal/AlertModal.tsx', () => {
-  return function MockAlertModal({ isOpen, close }: { isOpen: boolean; close: () => void }) {
-    return isOpen && <button aria-label="error-modal" onClick={close} />;
-  };
-});
-
 describe('상세 데이터 통신 에러', () => {
   beforeEach(() => {
     server.use(
@@ -107,9 +103,15 @@ describe('상세 데이터 통신 에러', () => {
       })
     );
   });
-  it('에러가 발생하면 AlertModal을 보여준다.', async () => {
-    await render(<StoreDetailInfo id={13} />);
-    const errorModal = await screen.findByLabelText('error-modal');
+  it('에러가 발생하면 AlertModal을 보여주고 확인을 누르면 "/"경로로 이동하게 된다.', async () => {
+    const { user } = await render(<StoreDetailInfo id={13} />);
+    const errorModal = await screen.findByText('서비스 장애가 발생하였습니다.');
     expect(errorModal).toBeInTheDocument();
+
+    const backButton = await screen.findByText('확인');
+    expect(backButton).toBeInTheDocument();
+
+    await user.click(backButton);
+    expect(routerReplace).toHaveBeenNthCalledWith(1, '/');
   });
 });

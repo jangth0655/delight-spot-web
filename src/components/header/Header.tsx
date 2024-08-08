@@ -37,7 +37,7 @@ export default function Header({ title, isBack, backUrl, customMenu, customButto
   };
 
   return (
-    <header ref={headerRef} className="fixed m-auto left-0 right-0 bg-white z-50">
+    <header ref={headerRef} className="fixed m-auto left-0 right-0 bg-white z-50 py-2">
       <div className="w-sm md:w-md m-auto relative">
         <div className="py-4 px-1 flex items-center relative justify-between h-14 bg-white z-20">
           {isBack ? (
@@ -50,7 +50,7 @@ export default function Header({ title, isBack, backUrl, customMenu, customButto
             <div />
           )}
 
-          <h1 className="absolute left-1/2 transform -translate-x-1/2 text-h4 font-bold text-slate-S900">{title}</h1>
+          <h1 className="absolute left-1/2 transform -translate-x-1/2 text-h4 font-bold text-slate-S900 ">{title}</h1>
           {customMenu ? (
             <button aria-label="menu-button" type="button" onClick={handleMenuButton}>
               <MdOutlineMenu size={24} />
