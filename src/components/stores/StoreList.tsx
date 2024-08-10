@@ -2,7 +2,7 @@
 
 import { useGetInfiniteStores } from '@/hooks/queries/useStores';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useStoreListTabState } from '@/store/useStoreListTabStore';
 import { useModal } from '@/hooks/useModal';
 import Link from 'next/link';
@@ -19,10 +19,15 @@ export default function StoreList() {
   const { selectedTab, setSelectedTab } = useStoreListTabState();
   const { data, fetchNextPage, isPending, isSuccess, error: storeListError } = useGetInfiniteStores();
   const limitRef = useRef<HTMLDivElement | null>(null);
+  const [isClientReady, setIsClientReady] = useState(false);
   const { isInterSecting } = useIntersectionObserver({
-    node: limitRef.current,
+    node: isClientReady ? limitRef.current : null,
   });
   const errorModal = useModal();
+
+  useEffect(() => {
+    setIsClientReady(true);
+  }, []);
 
   useEffect(() => {
     if (storeListError) {
@@ -31,7 +36,7 @@ export default function StoreList() {
   }, [storeListError, errorModal]);
 
   useEffect(() => {
-    if (isSuccess && isInterSecting) {
+    if (isInterSecting) {
       fetchNextPage();
     }
   }, [isInterSecting, fetchNextPage, isSuccess]);
@@ -65,7 +70,7 @@ export default function StoreList() {
         ) : (
           <EmptyNotice height={400} />
         ))}
-      <div ref={limitRef} className="mt-4" />
+      <div ref={limitRef} className="mt-4 border-2" />
       {storeListError?.statusCode === 401 ? (
         <LoginModal isOpen={errorModal.isVisible} onCloseModal={errorModal.hide} />
       ) : (

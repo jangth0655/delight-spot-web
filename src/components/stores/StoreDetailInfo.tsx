@@ -172,7 +172,7 @@ export default function StoreDetailInfo({ id }: Props) {
               <p className="text-label leading-label text-system-S500 font-semibold mt-0.5">네이버 지도에서 보기</p>
               <IoArrowForward size={14} color="#00A007" />
             </Link>
-            <Maps address={data?.city} />
+            {data?.city && <Maps address={data?.city} />}
           </div>
         </div>
 

@@ -30,15 +30,13 @@ function useGetInfiniteStores(
 ) {
   const { selectedTab } = useStoreListTabState();
   return useInfiniteQuery({
-    queryFn: ({ pageParam }) => {
-      return getStores(pageParam, selectedTab);
-    },
+    queryFn: ({ pageParam }) => getStores(pageParam, selectedTab),
     queryKey: [queryKeys.STORE.GET_STORES, selectedTab],
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) => {
       if (lastPage.length < number.INFINITE_QUERY_OFFSET) return undefined;
       const lastFeed = lastPage.at(-1);
-      return lastFeed ? allPage.length + 1 : undefined;
+      return lastFeed ? allPage?.length + 1 : undefined;
     },
     staleTime: number.QUERY_ONE_HOUR_TIMES,
     gcTime: number.QUERY_ONE_HOUR_TIMES,
