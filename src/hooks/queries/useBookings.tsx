@@ -14,13 +14,18 @@ import {
   useMutation,
 } from '@tanstack/react-query';
 
+export type BookingStoreList = {
+  pk: number;
+  store: BookingStore[];
+};
+
 export function useGetBookingList(
   selectedType: string = 'all',
   queryOptions?: UseInfiniteQueryOptions<
-    BookingStore[],
+    BookingStoreList[],
     ErrorStatus,
-    InfiniteData<BookingStore[], number>,
-    BookingStore[],
+    InfiniteData<BookingStoreList[], number>,
+    BookingStoreList[],
     QueryKey,
     number
   >
@@ -43,7 +48,7 @@ export function useGetBookingList(
   });
 }
 
-export function useToggleBooking(storeId: number, mutationOptions?: UseMutationCustomOptions) {
+export function useToggleBooking(mutationOptions?: UseMutationCustomOptions) {
   const { addToast } = useToastStore();
   const selectedTab = useStoreListTabState((state) => state.selectedTab);
   return useMutation({
@@ -60,7 +65,7 @@ export function useToggleBooking(storeId: number, mutationOptions?: UseMutationC
       });
       return prevData;
     },
-    onError: () => {
+    onError: (error, storeId, context) => {
       queryClient.invalidateQueries({
         queryKey: [queryKeys.STORE.GET_STORE_DETAIL, storeId],
       });

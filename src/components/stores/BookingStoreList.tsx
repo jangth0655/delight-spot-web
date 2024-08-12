@@ -24,10 +24,11 @@ export default function BookingStoreList() {
 
   return (
     <div className="pt-20">
+      {data?.pages && data?.pages[0][0].store.length < 1 && <h1>찜 목록이 없습니다.</h1>}
       {!isPending &&
         (hasStoreList ? (
           <ul className="grid grid-cols-2 gap-4">
-            {data?.pages.flat().map((item) => (
+            {data?.pages[0][0].store.map((item) => (
               <BookingStoreItem key={item.pk} item={item} size={170} />
             ))}
           </ul>

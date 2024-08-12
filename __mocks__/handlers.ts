@@ -1,6 +1,7 @@
 import { rest } from 'msw';
 import storeData from '../src/server/response/stores.json';
 import reviewList from '../src/server/response/reviews.json';
+import bookingList from '../src/server/response/bookings.json';
 import userInfo from '../src/server/response/users.json';
 import StoreDetailData from '../src/server/response/storeDetail.json';
 
@@ -61,5 +62,13 @@ export const handlers = [
         imageUrl: '/mock-test-image.png',
       })
     );
+  }),
+
+  rest.get(`${API_BASE_URL}/bookings`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(bookingList));
+  }),
+
+  rest.post(`${API_BASE_URL}/bookings`, (req, res, ctx) => {
+    return res(ctx.status(200));
   }),
 ];

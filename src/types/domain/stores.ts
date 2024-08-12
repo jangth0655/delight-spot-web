@@ -60,8 +60,8 @@ interface StoreDetail {
 interface BookingStore {
   pk: number;
   name: string;
-  photos: string[];
-  create_at: Date;
+  photos: string[][];
+  created_at: string | Date;
 }
 
 export type { SellingList, Store, KindMenu, StoreDetail, RatingTitle, BookingStore, PetFriendlyOption };

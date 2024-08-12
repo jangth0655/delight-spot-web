@@ -1,0 +1,41 @@
+[
+  {
+    "pk": 2,
+    "store": [
+      {
+        "pk": 2,
+        "name": "수원인계동 엽떡",
+        "photos": [
+          [
+            "https://delight-spot.s3.ap-northeast-2.amazonaws.com/84f47db9-71f7-4164-9f22-152e94cd9e1f-수원인계동_엽떡.jpeg",
+            "https://delight-spot.s3.ap-northeast-2.amazonaws.com/6b15208f-d797-4c13-83ac-a8ad26469120-수원인계동_엽떡2.jpeg"
+          ]
+        ],
+        "created_at": "2024-08-06T22:16:23.861994+09:00"
+      },
+      {
+        "pk": 25,
+        "name": "슬로우캘리 광교아브뉴프랑점",
+        "photos": [
+          [
+            "https://delight-spot.s3.ap-northeast-2.amazonaws.com/ee830e97-a5f8-4459-9d5b-c7876ced9dd3-caly_1.jpeg",
+            "https://delight-spot.s3.ap-northeast-2.amazonaws.com/11e5051c-96af-4980-94d4-7d05741454ed-caly_2.jpeg",
+            "https://delight-spot.s3.ap-northeast-2.amazonaws.com/137be35a-6f22-433e-af6c-707ce7d39de4-caly_3.jpeg"
+          ]
+        ],
+        "created_at": "2024-08-07T21:36:27.496122+09:00"
+      },
+      {
+        "pk": 26,
+        "name": "영통 홍화루 짬뽕",
+        "photos": [
+          [
+            "https://delight-spot.s3.ap-northeast-2.amazonaws.com/9119d704-c0bc-4075-8926-bbf2e9ccc175-다운로드 (1).jpeg",
+            "https://delight-spot.s3.ap-northeast-2.amazonaws.com/69098bce-141a-4742-b2fb-1d3d2c1ca501-다운로드.jpeg"
+          ]
+        ],
+        "created_at": "2024-08-08T15:06:12.919787+09:00"
+      }
+    ]
+  }
+]
