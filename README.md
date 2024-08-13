@@ -29,17 +29,26 @@
 <details>
 <summary>기능 GIF 보기</summary>
 
-- 카카오 로그인
-- 스토어 CRUD
-- 리뷰 CRUD (평점)
-- 스토어 찜(Booking)하기
-- 나의 찜목록 확인과 찜목록 제거
+- **카카오 로그인**: 카카오 계정을 사용하여 쉽게 로그인할 수 있는 기능.
+- **스토어 CRUD**: 사용자가 스토어를 생성(Create), 읽기(Read), 수정(Update), 삭제(Delete)할 수 있는 기능.
+- **리뷰 CRUD (평점)**: 사용자가 스토어에 대한 리뷰를 작성(Create), 읽기(Read), 수정(Update), 삭제(Delete)하며 평점을 부여할 수 있는 기능.
+- **스토어 찜(Booking)하기**: 마음에 드는 스토어를 찜(Booking) 목록에 추가할 수 있는 기능.
+- **나의 찜목록 확인과 제거**: 사용자가 자신이 찜한 스토어 목록을 확인하고, 목록에서 제거할 수 있는 기능.
 
-<p style="text-align: center;">
-  <img src="https://delight-spot.s3.ap-northeast-2.amazonaws.com/mypage.gif" alt="mypage" width="500" height="auto">
-  <img src="https://cudas-blog-image.s3.ap-northeast-2.amazonaws.com/create_store.gif" alt="createStore" width="500" height="auto">
-  <img src="https://cudas-blog-image.s3.ap-northeast-2.amazonaws.com/read_review.gif" alt="read_review" width="500" height="auto">
-</p>
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
+  <h4>﹒Mypage 기능</h4>
+  <img src="https://github.com/delight-spot/README-Contents/blob/main/mypage.gif?raw=true" alt="Mypage" width="700" height="auto">
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
+  <h4>﹒스토어 생성 기능</h4>
+  <img src="https://github.com/delight-spot/README-Contents/blob/main/create_store.gif?raw=true" alt="Create Store" width="700" height="auto">
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
+  <h4>﹒리뷰 읽기 기능</h4>
+  <img src="https://github.com/delight-spot/README-Contents/blob/main/read_review.gif?raw=true" alt="Read Review" width="700" height="auto">
+</div>
 
 </details>
 
@@ -59,7 +68,7 @@
   - 동적 스크립트 로딩을 구현하여 필요 시점에만 스크립트를 로드함으로써 초기 로딩 시간을 줄였습니다.
   - 서버사이드 데이터 페칭을 활용해 초기 콘텐츠 로딩 시간을 단축하고, 사용자 경험을 향상시켰습니다.
 
-  **최적화 결과**:
+  **🧑‍💻 최적화 결과**:
 
   - **LCP(최대 콘텐츠 색인 시간)**:
 
