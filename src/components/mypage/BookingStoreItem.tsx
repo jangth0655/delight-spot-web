@@ -6,7 +6,6 @@ import Link from 'next/link';
 import ImageSlider from '../stores/ImageSlider';
 
 import { BookingStore } from '@/types/domain/stores';
-import { useToggleBooking } from '@/hooks/queries/useBookings';
 
 interface Props {
   item: BookingStore;
@@ -17,7 +16,7 @@ interface Props {
 export default function BookingStoreItem({ item, size = 156, deleteBookingStore }: Props) {
   return (
     <li data-testid="bookingStoreList-li" className="relative flex-none flex flex-col gap-2">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center gap-4">
         <Link href={`/store/${item.pk}`} className="text-black text-body-s">
           {item.name.length > 8 ? `${item.name.slice(0, 8)}...` : item.name}
         </Link>
@@ -36,7 +35,7 @@ export default function BookingStoreItem({ item, size = 156, deleteBookingStore 
         className="relative"
       >
         {item?.photos && item.photos.length > 0 ? (
-          <ImageSlider images={item.photos[0]} />
+          <ImageSlider images={item.photos[0]} width={175} height={175} />
         ) : (
           <div
             className="absolute w-full h-full bg-slate-200 flex items-center justify-center"

@@ -8,9 +8,11 @@ import LoadingSpinner from '../LoadingSpinner';
 
 interface Props {
   images: string[];
+  width?: string | number;
+  height?: string | number;
 }
 
-export default function ImageSlider({ images }: Props) {
+export default function ImageSlider({ images, height = '100%', width = '100%' }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
@@ -28,7 +30,13 @@ export default function ImageSlider({ images }: Props) {
   }, [currentIndex]);
 
   return (
-    <div className="absolute w-full h-full">
+    <div
+      style={{
+        width,
+        height,
+      }}
+      className="absolute"
+    >
       <Image
         src={images[currentIndex]}
         alt="slider_image"

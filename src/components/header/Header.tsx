@@ -28,8 +28,11 @@ export default function Header({ title, isBack, backUrl, customMenu, customButto
   });
 
   const onBackPage = () => {
-    if (backUrl) return router.push(backUrl);
-    router.back();
+    if (backUrl) {
+      return router.push(backUrl);
+    } else {
+      router.back();
+    }
   };
 
   const handleMenuButton = () => {

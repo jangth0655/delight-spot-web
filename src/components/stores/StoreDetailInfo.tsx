@@ -35,6 +35,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { copyToClipboard } from '@/utils/copyText';
 import { storeRatingList } from '@/constants';
+import { useToastStore } from '@/store/useToastStore';
 const Maps = dynamic(() => import('../Map'), {
   ssr: false,
 });
@@ -45,13 +46,14 @@ interface Props {
 
 export default function StoreDetailInfo({ id }: Props) {
   const { data, isError } = useGetStoreDetail(id);
+  const { addToast } = useToastStore();
   const router = useRouter();
   const modal = useModal();
   const loginModal = useModal();
 
   const { isLoggedIn } = useUser();
 
-  const { mutate: toggleBooking } = useToggleBooking(id);
+  const { mutate: toggleBooking } = useToggleBooking();
 
   const ratingList: { title: RatingTitle; rating: number }[] = data
     ? storeRatingList.reduce<{ title: RatingTitle; rating: number }[]>((acc, title) => {
@@ -77,6 +79,14 @@ export default function StoreDetailInfo({ id }: Props) {
     router.push(`/store/${id}/review`);
   };
 
+  const onCopyAddress = async () => {
+    await copyToClipboard(data?.city ?? '');
+    addToast({
+      message: '주소를 복사했습니다.',
+      type: 'success',
+    });
+  };
+
   useEffect(() => {
     if (isError) {
       modal.show();
@@ -85,7 +95,12 @@ export default function StoreDetailInfo({ id }: Props) {
 
   return (
     <div className="pb-5">
-      <Header title={data?.name ?? ''} isBack customMenu={data?.is_owner && <StoreDetailMenu storeId={id} />} />
+      <Header
+        title={data?.name ?? ''}
+        isBack
+        backUrl="/"
+        customMenu={data?.is_owner && <StoreDetailMenu storeId={id} />}
+      />
       <div className="pt-20 min-w-sm md:w-md m-auto">
         <div className="flex items-center gap-2 mb-4 px-4">
           <Avatar size={40} avatarUrl={data?.owner.avatar} />
@@ -127,7 +142,7 @@ export default function StoreDetailInfo({ id }: Props) {
             <button
               aria-label="city-copy-button"
               className="flex items-center gap-1 cursor-pointer"
-              onClick={() => copyToClipboard(data?.city ?? '')}
+              onClick={onCopyAddress}
             >
               <span className="text-label leading-label text-primary-P300 font-semibold max-w-[200px] ">
                 {data?.city}

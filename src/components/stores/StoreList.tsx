@@ -70,7 +70,7 @@ export default function StoreList() {
         ) : (
           <EmptyNotice height={400} />
         ))}
-      <div ref={limitRef} className="mt-4 border-2" />
+      <div ref={limitRef} className="mt-4" />
       {storeListError?.statusCode === 401 ? (
         <LoginModal isOpen={errorModal.isVisible} onCloseModal={errorModal.hide} />
       ) : (

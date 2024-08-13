@@ -13,42 +13,21 @@ interface Props {
 export default function UploadPhotoList({ fileUrls = [], onDeleteFileUrls }: Props) {
   const totalSlots = 5;
   const modal = useModal();
-  const { mutate: deleteImageMutate, isPending } = useDeleteImage({
-    onError: () => {
-      modal.show();
-    },
-  });
+  const { mutate: deleteImageMutate, isPending } = useDeleteImage();
 
   const deleteImage = (fileUrl: string) => {
-    onDeleteFileUrls(fileUrl);
     const urlObj = new URL(fileUrl);
     const fileName = urlObj.pathname.split('/')[1];
     if (!fileName) return;
-    deleteImageMutate([fileName]);
+    deleteImageMutate([fileName], {
+      onSuccess: () => {
+        onDeleteFileUrls(fileUrl);
+      },
+      onError: () => {
+        modal.show();
+      },
+    });
   };
-
-  // 브라우저 종료, 게시 하지 않은 경우 모든 이미지 제거, isSubmit일 경우만!
-  // const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-  //   if (!isFormSaved) {
-  //     fileUrls.forEach((fileUrl) => {
-  //       const urlObj = new URL(fileUrl);
-  //       const fileName = urlObj.pathname.split('/')[1];
-  //       if (fileName) {
-  //         deleteImageMutate(fileName);
-  //       }
-  //     });
-  //     event.preventDefault();
-  //     event.returnValue = ''; // 표준 방식
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('beforeunload', handleBeforeUnload);
-
-  //   return () => {
-  //     window.removeEventListener('beforeunload', handleBeforeUnload);
-  //   };
-  // }, [fileUrls, deleteImageMutate, isFormSaved]);
 
   return (
     <ul className="grid grid-cols-3 gap-4 max-w-sm">
@@ -64,6 +43,7 @@ export default function UploadPhotoList({ fileUrls = [], onDeleteFileUrls }: Pro
                 </div>
               )}
               <button
+                type="button"
                 onClick={() => deleteImage(fileUrls[index])}
                 className="absolute right-1 top-0 z-20 p-1 bg-system-S200 rounded-full hover:bg-system-S100 transition-colors"
               >
@@ -78,3 +58,26 @@ export default function UploadPhotoList({ fileUrls = [], onDeleteFileUrls }: Pro
     </ul>
   );
 }
+
+// 브라우저 종료, 게시 하지 않은 경우 모든 이미지 제거, isSubmit일 경우만!
+// const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+//   if (!isFormSaved) {
+//     fileUrls.forEach((fileUrl) => {
+//       const urlObj = new URL(fileUrl);
+//       const fileName = urlObj.pathname.split('/')[1];
+//       if (fileName) {
+//         deleteImageMutate(fileName);
+//       }
+//     });
+//     event.preventDefault();
+//     event.returnValue = ''; // 표준 방식
+//   }
+// };
+
+// useEffect(() => {
+//   window.addEventListener('beforeunload', handleBeforeUnload);
+
+//   return () => {
+//     window.removeEventListener('beforeunload', handleBeforeUnload);
+//   };
+// }, [fileUrls, deleteImageMutate, isFormSaved]);

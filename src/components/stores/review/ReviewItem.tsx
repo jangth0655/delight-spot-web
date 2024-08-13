@@ -60,7 +60,7 @@ export default function ReviewItem({ review, isOwner, storeId }: Props) {
         )}
 
         <p>{review.description}</p>
-        {review?.total_rating && (
+        {review?.total_rating !== 0 && review?.total_rating && (
           <div className="flex items-center gap-1">
             <p>총 평점</p>
             <IoStar color="#FFBD53" />

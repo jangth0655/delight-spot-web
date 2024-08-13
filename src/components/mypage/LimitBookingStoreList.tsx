@@ -58,7 +58,7 @@ export default function LimitBookingStoreList({ bookingStores, deleteBookingStor
   return (
     <div className="relative w-full group">
       {showBackButton && <ListMoveButton direction="left" onClick={handleBackClick} />}
-      <ul ref={listRef} className="flex items-center gap-4 overflow-x-auto relative pb-1">
+      <ul ref={listRef} className="flex items-center gap-8 overflow-x-auto relative pb-1">
         {bookingStores?.map((item) => (
           <BookingStoreItem item={item} key={item.pk} deleteBookingStore={deleteBookingStore} />
         ))}

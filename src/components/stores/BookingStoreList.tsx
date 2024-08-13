@@ -1,6 +1,6 @@
 'use client';
 
-import { useGetBookingList } from '@/hooks/queries/useBookings';
+import { useGetBookingList, useToggleBooking } from '@/hooks/queries/useBookings';
 import { useEffect, useRef } from 'react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
@@ -9,6 +9,7 @@ import EmptyNotice from '../EmptyNotice';
 
 export default function BookingStoreList() {
   const { data, fetchNextPage, isPending, isSuccess } = useGetBookingList();
+  const { mutate: deleteBooking } = useToggleBooking();
 
   const limitRef = useRef<HTMLDivElement | null>(null);
   const { isInterSecting } = useIntersectionObserver({
@@ -29,7 +30,7 @@ export default function BookingStoreList() {
         (hasStoreList ? (
           <ul className="grid grid-cols-2 gap-4">
             {data?.pages[0][0].store.map((item) => (
-              <BookingStoreItem key={item.pk} item={item} size={170} />
+              <BookingStoreItem key={item.pk} item={item} size={170} deleteBookingStore={deleteBooking} />
             ))}
           </ul>
         ) : (
