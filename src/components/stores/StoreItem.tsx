@@ -17,12 +17,12 @@ export default function StoreItem({ store }: Props) {
   const handleImageError = () => {
     setImageError(true);
   };
-  //sizes="256px"
+
   return (
     <li className="flex gap-2">
       <div className="relative w-[8rem] h-[8rem] rounded-md overflow-hidden ">
         {store.store_photo?.length > 0 && !imageError ? (
-          <Image src={store.store_photo[0]} alt={`store ${store.name}`} fill onError={handleImageError} />
+          <Image src={store.store_photo[0]} alt={`store ${store.name}`} fill onError={handleImageError} sizes="256px" />
         ) : (
           <div className="absolute w-full h-full bg-slate-S200 flex items-center justify-center">
             <IoImage size={20} color="#64748b" data-testid="store-no-image-icon" />
