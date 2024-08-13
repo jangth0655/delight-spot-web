@@ -36,9 +36,9 @@
 - 나의 찜목록 확인과 찜목록 제거
 
 <p style="text-align: center;">
-  <img src="https://delight-spot.s3.ap-northeast-2.amazonaws.com/%E1%84%86%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5.gif" alt="mypage" width="500" height="auto">
-  <img src="https://delight-spot.s3.ap-northeast-2.amazonaws.com/%E1%84%89%E1%85%B3%E1%84%90%E1%85%A9%E1%84%8B%E1%85%A5%E1%84%89%E1%85%A2%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC.gif" alt="createStore" width="500" height="auto">
-  <img src="https://delight-spot.s3.ap-northeast-2.amazonaws.com/%E1%84%8C%E1%85%A9%E1%84%92%E1%85%AC_%E1%84%85%E1%85%B5%E1%84%87%E1%85%B2.gif" alt="read_review" width="500" height="auto">
+  <img src="https://delight-spot.s3.ap-northeast-2.amazonaws.com/mypage.gif" alt="mypage" width="500" height="auto">
+  <img src="https://cudas-blog-image.s3.ap-northeast-2.amazonaws.com/create_store.gif" alt="createStore" width="500" height="auto">
+  <img src="https://cudas-blog-image.s3.ap-northeast-2.amazonaws.com/read_review.gif" alt="read_review" width="500" height="auto">
 </p>
 
 </details>
