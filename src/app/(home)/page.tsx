@@ -15,12 +15,11 @@ export default async function HomePage() {
   return (
     <section>
       <Header title="STORE LIST" customMenu={<HeaderMenu />} />
-      <StoreList />
-      {/* <Suspense fallback={<StoreListSkeleton paddingTop={70} length={10} />}>
+      <Suspense fallback={<StoreListSkeleton paddingTop={70} length={10} />}>
         <HydrationBoundary state={dehydrate(queryClient)}>
           <StoreList />
         </HydrationBoundary>
-      </Suspense> */}
+      </Suspense>
       <StoreAddButton />
       <Toast isShowing />
     </section>
