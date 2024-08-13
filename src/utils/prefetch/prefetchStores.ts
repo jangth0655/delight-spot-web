@@ -13,7 +13,5 @@ export async function prefetchStores() {
     initialPageParam: 1,
   });
 
-  console.log('Prefetched stores:', serverQueryClient.getQueryData([queryKeys.STORE.GET_STORES, initialSelectedTab]));
-
   return serverQueryClient;
 }
