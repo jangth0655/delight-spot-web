@@ -1,6 +1,7 @@
 <h2 style="text-align: center;">Delight Spot 👩‍💻 🧑‍💻</h2>
 <p style="text-align: center;">나만의 맛집과 즐거운 장소를 친구나 지인들에게 공유하는 플랫폼입니다.</p>
-<hr style="border: 1px solid #d1d5db; margin: 20px 0;" />
+
+<br />
 
 ## 목차
 
@@ -10,7 +11,9 @@
 - [기술 스택](#기술-스택)
 - [미래 계획](#미래-계획)
 
-## #개요
+<br />
+
+## 개요
 
 - **프로젝트 이름**: Delight Spot
 - **프로젝트 기간**: 2024년 6월 ~ 2024년 8월
@@ -19,9 +22,9 @@
   - **성능 최적화** 및 **테스트 코드 적용**을 통한 안정성 향상 학습.
 - **참여 인원**: Back-End 1명, Front-End 1명 (본인)
 
----
+<br />
 
-## #기능
+## 기능
 
 <details>
 <summary>기능 GIF 보기</summary>
@@ -40,7 +43,7 @@
 
 </details>
 
----
+<br />
 
 ## 프로젝트를 통해 쌓은 경험
 
@@ -59,12 +62,13 @@
   **최적화 결과**:
 
   - **LCP(최대 콘텐츠 색인 시간)**:
+
     - 성능 탭에서 LCP는 **5.65초에서 3.09초로 개선**되었습니다 (3G, 캐시 비활성화 환경에서 측정).
     - Lighthouse에서 LCP는 **0.9초에서 0.6초로** 단축되었습니다.
 
----
+<br />
 
-## #기술 스택
+## 기술 스택
 
 <p>
   <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white"/>
@@ -77,9 +81,9 @@
   <img src="https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
 </p>
 
----
+<br />
 
-## #미래 계획
+## 미래 계획
 
 - **E2E 테스트 도입**:
 
