@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google';
 import QueryProvider from '@/QueryProvider';
 import './globals.css';
 import KakaoScript from '@/components/KakaoScript';
-import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,12 +20,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <KakaoScript />
-        <Script
-          id="naver-map-script"
-          type="text/javascript"
-          src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env
-            .NEXT_PUBLIC_NMAP_KEY!}&submodules=geocoder`}
-        />
         <QueryProvider>
           <main className="w-sm md:w-md m-auto">{children}</main>
           <div id="modal" />
