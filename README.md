@@ -36,17 +36,17 @@
 - **나의 찜목록 확인과 제거**: 사용자가 자신이 찜한 스토어 목록을 확인하고, 목록에서 제거할 수 있는 기능.
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
-  <h4>﹒Mypage 기능</h4>
+  <h4>﹒Mypage</h4>
   <img src="https://github.com/delight-spot/README-Contents/blob/main/mypage.gif?raw=true" alt="Mypage" width="700" height="auto">
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
-  <h4>﹒스토어 생성 기능</h4>
+  <h4>﹒스토어 생성</h4>
   <img src="https://github.com/delight-spot/README-Contents/blob/main/create_store.gif?raw=true" alt="Create Store" width="700" height="auto">
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
-  <h4>﹒리뷰 읽기 기능</h4>
+  <h4>﹒리뷰 읽기</h4>
   <img src="https://github.com/delight-spot/README-Contents/blob/main/read_review.gif?raw=true" alt="Read Review" width="700" height="auto">
 </div>
 
