@@ -97,6 +97,7 @@ function useDeleteStore(storeId: number, mutationOptions?: UseMutationCustomOpti
 
 function useEditStore(storeId: number, mutationOptions?: UseMutationCustomOptions) {
   const queryClient = useQueryClient();
+  const { selectedTab } = useStoreListTabState();
   const router = useRouter();
   const { addToast } = useToastStore();
   return useMutation({
@@ -104,6 +105,10 @@ function useEditStore(storeId: number, mutationOptions?: UseMutationCustomOption
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [queryKeys.STORE.GET_STORE_DETAIL, storeId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [queryKeys.STORE.GET_STORES, selectedTab],
+        refetchType: 'inactive',
       });
       router.push(`/store/${storeId}`);
       addToast({

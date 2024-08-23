@@ -46,7 +46,12 @@
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
-  <h4>﹒리뷰 읽기</h4>
+  <h4>﹒스토어 업데이트(수정﹒제거)</h4>
+  <img src="https://github.com/delight-spot/README-Contents/blob/main/store_update.gif?raw=true" alt="Create Store" width="700" height="auto">
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
+  <h4>﹒리뷰 생성﹒수정﹒제거</h4>
   <img src="https://github.com/delight-spot/README-Contents/blob/main/read_review.gif?raw=true" alt="Read Review" width="700" height="auto">
 </div>
 
