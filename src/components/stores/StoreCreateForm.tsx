@@ -24,6 +24,7 @@ import { petFriendlyOptions } from '@/constants';
 import { translateKindMenu, translatePetFriendlyType } from '@/utils/translateToKorean';
 import { useUser } from '@/hooks/useUser';
 import AlertModal from '../modal/AlertModal';
+import LoginModal from '../modal/LoginModal';
 
 type CreateForm = {
   description: string;
@@ -51,6 +52,7 @@ export default function StoreCreateForm() {
   const [fileUrls, setFileUrls] = useState<string[]>([]);
   const typeSelectorModal = useModal();
   const alertModal = useModal();
+  const loginModal = useModal();
   const { mutate: createStore, isPending } = useCreateStore({
     onError: () => {
       alertModal.show();
@@ -97,7 +99,7 @@ export default function StoreCreateForm() {
   }, []);
 
   const onSubmit = (data: CreateForm) => {
-    if (!isLoggedIn) return;
+    if (!isLoggedIn) return loginModal.show();
     if (!data.address) {
       return setError('address', { message: '주소를 입력해주세요.' });
     }
@@ -221,6 +223,7 @@ export default function StoreCreateForm() {
         </div>
       </BottomModal>
 
+      <LoginModal isOpen={loginModal.isVisible} onCloseModal={loginModal.hide} />
       <AlertModal type="error" close={alertModal.hide} isOpen={alertModal.isVisible} />
     </form>
   );

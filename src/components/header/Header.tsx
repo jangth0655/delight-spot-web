@@ -40,8 +40,8 @@ export default function Header({ title, isBack, backUrl, customMenu, customButto
   };
 
   return (
-    <header ref={headerRef} className="fixed m-auto left-0 right-0 bg-white z-50 py-2">
-      <div className="w-sm md:w-md m-auto relative">
+    <header ref={headerRef} className="fixed m-auto left-0 right-0 bg-white z-50">
+      <div className="w-sm md:w-md m-auto relative bg-white z-50">
         <div className="py-4 px-1 flex items-center relative justify-between h-14 bg-white z-20">
           {isBack ? (
             <HeaderButton

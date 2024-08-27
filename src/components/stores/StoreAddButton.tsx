@@ -4,10 +4,6 @@ import { useScrollProgress } from '@/hooks/useScroll';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { IoAdd } from 'react-icons/io5';
-import { useModal } from '@/hooks/useModal';
-import { useUser } from '@/hooks/useUser';
-
-import LoginModal from '../modal/LoginModal';
 
 const buttonVariants: Variants = {
   notScrolled: {
@@ -22,20 +18,10 @@ const buttonVariants: Variants = {
 
 export default function StoreAddButton() {
   const { isScrolledPx } = useScrollProgress({ px: 100 });
-  const { isLoggedIn } = useUser();
-  const modal = useModal();
-
-  const handleLoggedIn = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    if (!isLoggedIn) {
-      e.preventDefault();
-      e.stopPropagation();
-      modal.show();
-    }
-  };
 
   return (
     <div className="fixed left-0 right-4 m-auto flex items-center justify-end bottom-5 w-sm md:w-md">
-      <Link onClick={handleLoggedIn} href={'/store/create'} className="absolute bottom-0">
+      <Link href={'/store/create'} className="absolute bottom-0">
         <motion.div
           variants={buttonVariants}
           initial="notScrolled"
@@ -67,8 +53,6 @@ export default function StoreAddButton() {
           </div>
         </motion.div>
       </Link>
-
-      <LoginModal isOpen={modal.isVisible} onCloseModal={modal.hide} />
     </div>
   );
 }
