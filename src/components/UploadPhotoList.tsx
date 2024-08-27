@@ -3,7 +3,7 @@ import { useModal } from '@/hooks/useModal';
 import Image from 'next/image';
 import { IoClose } from 'react-icons/io5';
 import LoadingSpinner from './LoadingSpinner';
-import { useEffect } from 'react';
+import { useRef } from 'react';
 
 interface Props {
   fileUrls?: string[];
@@ -14,17 +14,21 @@ export default function UploadPhotoList({ fileUrls = [], onDeleteFileUrls }: Pro
   const totalSlots = 5;
   const modal = useModal();
   const { mutate: deleteImageMutate, isPending } = useDeleteImage();
+  const deletingFileUrlRef = useRef<string | null>(null);
 
   const deleteImage = (fileUrl: string) => {
     const urlObj = new URL(fileUrl);
     const fileName = urlObj.pathname.split('/')[1];
     if (!fileName) return;
+    deletingFileUrlRef.current = fileUrl;
     deleteImageMutate([fileName], {
       onSuccess: () => {
         onDeleteFileUrls(fileUrl);
+        deletingFileUrlRef.current = null;
       },
       onError: () => {
         modal.show();
+        deletingFileUrlRef.current = null;
       },
     });
   };
@@ -35,11 +39,11 @@ export default function UploadPhotoList({ fileUrls = [], onDeleteFileUrls }: Pro
         <li key={index} className="w-full aspect-square rounded-lg overflow-hidden  relative">
           {fileUrls[index] ? (
             <div className="w-full h-full flex items-center justify-center">
-              {isPending ? (
+              {isPending && deletingFileUrlRef.current === fileUrls[index] ? (
                 <LoadingSpinner />
               ) : (
                 <div className="relative size-[75px] overflow-hidden rounded-lg">
-                  <Image fill src={fileUrls[index]} alt="Upload Image" className="object-cover" />
+                  <Image fill src={fileUrls[index]} alt="Upload Image" className="object-cover" sizes="256px" />
                 </div>
               )}
               <button

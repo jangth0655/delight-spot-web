@@ -2,12 +2,10 @@
 
 import { useUploadImage } from '@/hooks/queries/useImage';
 import { useModal } from '@/hooks/useModal';
-import { useUser } from '@/hooks/useUser';
 import { IoImage } from 'react-icons/io5';
 
 import AlertModal from '../modal/AlertModal';
 import LoadingSpinner from '../LoadingSpinner';
-import LoginModal from '../modal/LoginModal';
 
 import { ChangeEvent } from 'react';
 
@@ -22,13 +20,10 @@ interface Props {
 
 export default function UploadPhoto({ onSetFileUrls }: Props) {
   const modal = useModal();
-  const loginModal = useModal();
-  const { isLoggedIn } = useUser();
   const {
     mutate: upload,
     isPending,
     error,
-    data,
   } = useUploadImage({
     onSuccess: (data) => {
       if (data.imageUrl) {
@@ -41,7 +36,6 @@ export default function UploadPhoto({ onSetFileUrls }: Props) {
   });
 
   const handleFile = async (event: ChangeEvent<HTMLInputElement>) => {
-    if (!isLoggedIn) return loginModal.show();
     const file = event.target.files?.[0];
     if (!file) return;
 
@@ -69,7 +63,6 @@ export default function UploadPhoto({ onSetFileUrls }: Props) {
       </div>
       <input onChange={handleFile} type="file" id="photo" className="hidden" accept="image/*" />
 
-      <LoginModal isOpen={loginModal.isVisible} onCloseModal={loginModal.hide} />
       {error && <AlertModal close={modal.hide} isOpen={modal.isVisible} type="error" />}
     </div>
   );
